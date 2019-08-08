@@ -15,6 +15,12 @@ def autodiscover_xml():
     response.content_type = 'application/xml'
     return template('autodiscover_xml', config=config, email=email, username=username)
 
+@route('/mail/config-v1.1.xml')
+def autoconfig():
+    config = ET.parse('config.xml')
+    response.content_type = 'application/xml'
+    return template('autoconfig', config=config)
+
 @error(404)
 def err404(message):
     return "The requested page could not be found!"
