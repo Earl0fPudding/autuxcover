@@ -1,13 +1,15 @@
 from bottle import route, run, error, template, response, request
 import xml.etree.ElementTree as ET
 
-@route('/autodiscover/autodiscover.json')
+@route('/Autodiscover/Autodiscover.json', method=['GET', 'POST'])
+@route('/autodiscover/autodiscover.json', method=['GET', 'POST'])
 def autodiscover_json():
     config = ET.parse('config.xml')
     response.content_type = 'application/json'
     return template('autodiscover_json', config=config)
 
-@route('/autodiscover/autodiscover.xml')
+@route('/Autodiscover/Autodiscover.xml', method=['GET', 'POST'])
+@route('/autodiscover/autodiscover.xml', method=['GET', 'POST'])
 def autodiscover_xml():
     config = ET.parse('config.xml')
     email = request.body.read().decode("utf-8").split('<EMailAddress>')[1].split('</EMailAddress>')[0]
