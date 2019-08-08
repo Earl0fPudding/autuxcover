@@ -1,0 +1,12 @@
+[Unit]
+Description=Autuxcover - Outlook autodiscover and Thunderbird autoconfig
+
+[Service]
+User=autuxcover
+Group=autuxcover
+ExecStart=/bin/bash -c "cd /path/to/autuxcover; /usr/bin/python autuxcover.py"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
